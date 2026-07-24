@@ -1,0 +1,96 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-intro);
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.intro__bg {
+  position: absolute;
+  inset: -6%;
+  z-index: 0;
+}
+.intro__bg .arch-scene { width: 100%; height: 100%; }
+.intro__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(120% 90% at 50% 40%, rgba(16, 14, 11, 0.4) 0%, rgba(16, 14, 11, 0.82) 70%, var(--ink) 100%);
+}
+.intro__inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 var(--gutter);
+  max-width: 720px;
+}
+.intro__kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.intro__wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--step-5);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 14px 0 10px;
+}
+.intro__tagline {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  color: var(--cream-90);
+}
+.intro__rule {
+  width: min(280px, 60%);
+  height: 1px;
+  margin: 22px auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform-origin: center;
+}
+.intro__mal {
+  font-size: clamp(16px, 4vw, 22px);
+  color: var(--gold);
+}
+.intro__mission {
+  margin: 16px auto 0;
+  max-width: 44ch;
+  color: var(--cream-70);
+  font-size: var(--step-0);
+  line-height: 1.55;
+}
+.intro__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 36px;
+}
+.intro__enter {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--step-0);
+  color: var(--ink);
+  background: linear-gradient(120deg, var(--gold), var(--brass));
+  padding: 14px 30px;
+  border-radius: 40px;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+.intro__skip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cream-55);
+  transition: color var(--dur-fast);
+}
+@media (hover: hover) {
+  .intro__enter:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(224, 180, 88, 0.45); }
+  .intro__skip:hover { color: var(--gold); }
+}
