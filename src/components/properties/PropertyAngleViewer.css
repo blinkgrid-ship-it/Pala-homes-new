@@ -1,0 +1,156 @@
+.angle-viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.angle-viewer__stage {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: var(--shadow-soft);
+  touch-action: pan-y;
+  outline-offset: 3px;
+}
+.angle-viewer__stage:active {
+  cursor: grabbing;
+}
+.angle-viewer__frame {
+  position: absolute;
+  inset: 0;
+}
+
+.angle-viewer__caption {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 70%;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+}
+.angle-viewer__cat {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.angle-viewer__cap-text {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  line-height: 1.15;
+}
+
+.angle-viewer__count {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--cream);
+  background: rgba(16, 14, 11, 0.5);
+  padding: 5px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.angle-viewer__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--cream);
+  background: rgba(18, 62, 50, 0.65);
+  border: 1px solid var(--cream-18);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity var(--dur-fast), background var(--dur-fast);
+}
+.angle-viewer__stage:hover .angle-viewer__nav,
+.angle-viewer__stage:focus-within .angle-viewer__nav {
+  opacity: 1;
+}
+.angle-viewer__nav--prev { left: 14px; }
+.angle-viewer__nav--next { right: 14px; }
+@media (hover: none) {
+  .angle-viewer__nav { opacity: 1; background: rgba(18, 62, 50, 0.5); }
+}
+@media (hover: hover) {
+  .angle-viewer__nav:hover { background: var(--emerald); }
+}
+
+.angle-viewer__expand {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--gold);
+  padding: 8px 14px;
+  border-radius: 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* ---- angle strip ---- */
+.angle-strip {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  padding-bottom: 4px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.angle-strip::-webkit-scrollbar { height: 4px; }
+.angle-strip::-webkit-scrollbar-thumb { background: var(--cream-18); border-radius: 4px; }
+
+.angle-strip__item {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  scroll-snap-align: start;
+  opacity: 0.55;
+  transition: opacity var(--dur-fast), transform var(--dur-fast);
+}
+.angle-strip__item.is-active {
+  opacity: 1;
+}
+@media (hover: hover) {
+  .angle-strip__item:hover { opacity: 0.9; transform: translateY(-2px); }
+}
+.angle-strip__thumb {
+  position: relative;
+  display: block;
+  width: 92px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: border-color var(--dur-fast);
+}
+.angle-strip__item.is-active .angle-strip__thumb {
+  border-color: var(--gold);
+}
+.angle-strip__label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--cream-70);
+  text-align: center;
+}

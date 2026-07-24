@@ -1,0 +1,86 @@
+.blueprint {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* veil */
+.blueprint__veil {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 6, 4, 0.82);
+  opacity: 0;
+}
+
+/* trace */
+.blueprint__trace {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.bp-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+/* panels cover the image, then retract */
+.blueprint__panels {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.blueprint__panel {
+  background: var(--ink);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.bp-p1 { transform-origin: top; }
+.bp-p2 { transform-origin: bottom; }
+.bp-p3 { transform-origin: top; }
+
+/* -------- play sequence -------- */
+.blueprint.is-playing .blueprint__panel {
+  transform: scaleY(1);
+}
+.blueprint.is-playing .blueprint__veil {
+  animation: bpVeil 1.6s var(--ease-out) forwards;
+}
+.blueprint.is-playing .blueprint__trace {
+  animation: bpTraceFade 1.2s ease forwards;
+}
+.blueprint.is-playing .bp-line {
+  animation: bpDraw 0.7s var(--ease-out) forwards;
+}
+.blueprint.is-playing .bp-2 { animation-delay: 0.08s; }
+.blueprint.is-playing .bp-3 { animation-delay: 0.16s; }
+.blueprint.is-playing .bp-4 { animation-delay: 0.24s; }
+.blueprint.is-playing .bp-5 { animation-delay: 0.3s; }
+
+.blueprint.is-playing .bp-p1 { animation: bpReveal 0.9s 0.6s var(--ease-inout) forwards; transform-origin: top; }
+.blueprint.is-playing .bp-p2 { animation: bpReveal 0.9s 0.72s var(--ease-inout) forwards; transform-origin: bottom; }
+.blueprint.is-playing .bp-p3 { animation: bpReveal 0.9s 0.84s var(--ease-inout) forwards; transform-origin: top; }
+
+@keyframes bpVeil {
+  0% { opacity: 1; }
+  40% { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+@keyframes bpTraceFade {
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes bpDraw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes bpReveal {
+  from { transform: scaleY(1); }
+  to { transform: scaleY(0); }
+}
