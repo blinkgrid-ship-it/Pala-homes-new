@@ -1,0 +1,64 @@
+/* ============================================================
+   Pala Homes — design tokens
+   Kerala warmth meets modern Florida architecture.
+   ============================================================ */
+:root {
+  /* palette */
+  --emerald: #1f6b52;
+  --emerald-deep: #123e32;
+  --gold: #e0b458;
+  --brass: #a67c2e;
+  --cream: #f4ecd8;
+  --ivory: #faf6ec;
+  --clay: #c07a4e;
+  --ink: #100e0b;
+  --ink-soft: #1a1814;
+
+  /* alpha helpers */
+  --cream-90: rgba(244, 236, 216, 0.9);
+  --cream-70: rgba(244, 236, 216, 0.7);
+  --cream-55: rgba(244, 236, 216, 0.55);
+  --cream-35: rgba(244, 236, 216, 0.35);
+  --cream-18: rgba(244, 236, 216, 0.18);
+  --hairline: rgba(244, 236, 216, 0.14);
+
+  /* type families */
+  --font-display: 'Fraunces', 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Space Mono', 'SFMono-Regular', ui-monospace, monospace;
+  --font-mal: 'Noto Serif Malayalam', 'Fraunces', serif;
+
+  /* fluid type scale (clamp: min, preferred, max) */
+  --step--1: clamp(0.78rem, 0.74rem + 0.2vw, 0.86rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.6rem, 1.9rem + 3.4vw, 4.6rem);
+  --step-5: clamp(3.2rem, 2.2rem + 5vw, 6.2rem);
+
+  /* spacing */
+  --gutter: clamp(1.25rem, 0.9rem + 1.6vw, 2.75rem);
+  --section-y: clamp(4.5rem, 3rem + 7vw, 9rem);
+  --maxw: 1400px;
+  --radius: 14px;
+  --radius-lg: 24px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.22, 0.7, 0.2, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.24s;
+  --dur: 0.55s;
+  --dur-slow: 0.9s;
+
+  /* elevation */
+  --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 26px 70px rgba(0, 0, 0, 0.5);
+
+  /* z-index scale */
+  --z-header: 40;
+  --z-progress: 45;
+  --z-overlay: 60;
+  --z-intro: 80;
+  --z-film: 90;
+}
