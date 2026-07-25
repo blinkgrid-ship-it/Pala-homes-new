@@ -3,24 +3,54 @@
    Kerala warmth meets modern Florida architecture.
    ============================================================ */
 :root {
-  /* palette */
-  --emerald: #1f6b52;
-  --emerald-deep: #123e32;
-  --gold: #e0b458;
-  --brass: #a67c2e;
-  --cream: #f4ecd8;
-  --ivory: #faf6ec;
-  --clay: #c07a4e;
-  --ink: #100e0b;
-  --ink-soft: #1a1814;
+  /* ----------------------------------------------------------
+     palette — "Atlantic midnight, sea glass, limestone and champagne"
+     Source-of-truth tokens. Every colour used across the site should
+     trace back to one of these — no new hardcoded hex/rgba elsewhere.
+     ---------------------------------------------------------- */
+  --atlantic-950: #071719;
+  --atlantic-900: #0a2023;
+  --atlantic-850: #0d292c;
+  --atlantic-800: #123438;
+
+  --tide-600: #377a75;
+  --tide-500: #4a9189;
+  --sea-glass: #86ada4;
+
+  --limestone: #eee5d3;
+  --warm-ivory: #f7f2e7;
+  --sandstone: #d7c3a0;
+
+  --champagne: #d6ad63;
+  --burnished-brass: #b8863e;
+  --sunset-clay: #b96e55;
+
+  /* legacy alias names — kept so existing components need no rewrite */
+  --ink: #071112;
+  --ink-soft: #111c1d;
+  --ink-elevated: var(--atlantic-850);
+  --ink-raised: var(--atlantic-800);
+  --emerald: var(--tide-600);
+  --emerald-deep: var(--atlantic-800);
+  --sea-glass-deep: var(--tide-500);
+  --gold: var(--champagne);
+  --brass: var(--burnished-brass);
+  --sand: var(--sandstone);
+  --sand-deep: var(--sandstone);
+  --cream: var(--warm-ivory);
+  --ivory: var(--limestone);
+  --clay: var(--sunset-clay);
+  --muted-text: #aab9b5;
+  --ink-rgb: 7, 17, 18;
 
   /* alpha helpers */
-  --cream-90: rgba(244, 236, 216, 0.9);
-  --cream-70: rgba(244, 236, 216, 0.7);
-  --cream-55: rgba(244, 236, 216, 0.55);
-  --cream-35: rgba(244, 236, 216, 0.35);
-  --cream-18: rgba(244, 236, 216, 0.18);
-  --hairline: rgba(244, 236, 216, 0.14);
+  --cream-90: rgba(247, 242, 231, 0.9);
+  --cream-70: rgba(247, 242, 231, 0.72);
+  --cream-55: rgba(210, 220, 217, 0.62);
+  --cream-35: rgba(210, 220, 217, 0.38);
+  --cream-18: rgba(210, 220, 217, 0.2);
+  --hairline: rgba(134, 173, 164, 0.16);
+  --seaglass-18: rgba(134, 173, 164, 0.18);
 
   /* type families */
   --font-display: 'Fraunces', 'Georgia', 'Times New Roman', serif;
@@ -52,8 +82,8 @@
   --dur-slow: 0.9s;
 
   /* elevation */
-  --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.35);
-  --shadow-lift: 0 26px 70px rgba(0, 0, 0, 0.5);
+  --shadow-soft: 0 18px 50px rgba(3, 9, 10, 0.45);
+  --shadow-lift: 0 26px 70px rgba(3, 9, 10, 0.6);
 
   /* z-index scale */
   --z-header: 40;

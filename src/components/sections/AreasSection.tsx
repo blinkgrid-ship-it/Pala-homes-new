@@ -1,20 +1,12 @@
 import { motion } from 'framer-motion';
 import { areas } from '@/data/areas';
 import { SectionLabel } from '@/components/ui/SectionLabel';
-import { ArchScene } from '@/components/ui/ArchScene';
-import { conceptProperties } from '@/data/conceptProperties';
 import './AreasSection.css';
-
-/** Borrow a coherent palette from a matching concept for each area thumbnail. */
-import type { PropertyKind } from '@/types/property';
-
-function paletteFor(kind: PropertyKind) {
-  return (conceptProperties.find((p) => p.kind === kind) ?? conceptProperties[0]).palette;
-}
 
 export function AreasSection() {
   return (
     <section id="areas" className="areas" aria-labelledby="areas-title">
+      <div className="areas__glow" aria-hidden="true" />
       <div className="shell">
         <SectionLabel index="V">Florida Areas</SectionLabel>
         <h2 id="areas-title" className="areas__title">
@@ -30,17 +22,15 @@ export function AreasSection() {
             <motion.article
               key={a.name}
               className="areas__card"
+              data-accent={a.accent}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.22, 0.7, 0.2, 1] }}
             >
-              <div className="areas__media">
-                <ArchScene
-                  property={{ palette: paletteFor(a.render), kind: a.render }}
-                  view={{ render: 'exterior-hero', time: 'golden' }}
-                  className="arch-scene"
-                />
+              <div className="areas__media" aria-hidden="true">
+                <span className="areas__code">{a.code}</span>
+                <span className="areas__tag">Market perspective · {String(i + 1).padStart(2, '0')}</span>
               </div>
               <div className="areas__body">
                 <h3 className="areas__name">{a.name}</h3>

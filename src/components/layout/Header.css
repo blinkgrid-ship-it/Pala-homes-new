@@ -26,7 +26,7 @@
   padding-top: env(safe-area-inset-top);
 }
 .header.is-solid {
-  background: rgba(16, 14, 11, 0.78);
+  background: rgba(7, 23, 25, 0.78);
   backdrop-filter: blur(12px);
   border-bottom-color: var(--hairline);
 }
@@ -135,7 +135,7 @@
   position: fixed;
   inset: 0;
   z-index: 39;
-  background: rgba(12, 10, 8, 0.97);
+  background: rgba(6, 16, 18, 0.97);
   backdrop-filter: blur(14px);
   display: flex;
   flex-direction: column;

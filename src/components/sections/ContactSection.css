@@ -14,7 +14,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(18, 62, 50, 0.55) 0%, rgba(16, 14, 11, 0.92) 55%, var(--ink) 100%);
+  background: linear-gradient(180deg, rgba(55, 122, 117, 0.55) 0%, rgba(7, 23, 25, 0.92) 55%, var(--ink) 100%);
 }
 .contact__inner {
   position: relative;
@@ -86,7 +86,7 @@
 
 /* form */
 .contact__form-wrap {
-  background: rgba(16, 14, 11, 0.55);
+  background: rgba(7, 23, 25, 0.55);
   border: 1px solid var(--hairline);
   border-radius: var(--radius-lg);
   padding: clamp(20px, 3vw, 36px);

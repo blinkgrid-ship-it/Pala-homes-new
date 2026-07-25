@@ -38,7 +38,12 @@ export function PropertyScene({ property, onExploreAngles, onStepInside, onDiscu
 
   const hero = property.views[0];
   const firstInterior = Math.max(0, property.views.findIndex((v) => ['Living', 'Kitchen', 'Bedrooms'].includes(v.category)));
-  const anglePanels = property.views.filter((v) => v.id !== hero.id).slice(0, 2);
+  // Prefer alternate angles that have real photography; only fall back to a
+  // render-only view if fewer than two photographed alternates exist, so the
+  // floating boards never expose a bare vector illustration beside a photo.
+  const others = property.views.filter((v) => v.id !== hero.id);
+  const photographed = others.filter((v) => v.image);
+  const anglePanels = (photographed.length >= 2 ? photographed : others).slice(0, 2);
 
   return (
     <section

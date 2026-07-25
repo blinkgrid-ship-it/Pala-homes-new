@@ -10,7 +10,7 @@
 .blueprint__veil {
   position: absolute;
   inset: 0;
-  background: rgba(8, 6, 4, 0.82);
+  background: rgba(4, 12, 13, 0.82);
   opacity: 0;
 }
 
