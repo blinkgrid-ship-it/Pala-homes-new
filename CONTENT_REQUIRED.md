@@ -5,8 +5,9 @@ it can be presented as a real, active Pala Homes property site. Until then, keep
 `site.mode = 'concept'` in `src/config/site.ts`.
 
 ## Brand & legal
-- [ ] Official Pala Homes logo (SVG preferred) — replace the inline placeholder in
-      `components/layout/Header.tsx` and `public/favicon.svg`.
+- [x] Official Pala Homes logo — wired in as `src/assets/logo-mark.png` (header) and
+      `public/favicon-32.png` / `favicon-256.png` (favicon). A vector (SVG) source from
+      the designer would still be worth swapping in later for crisper scaling.
 - [ ] Verified brokerage name and real-estate **licence number(s)**.
 - [ ] Legal disclaimer reviewed by counsel.
 - [ ] Privacy policy + cookie/consent handling.

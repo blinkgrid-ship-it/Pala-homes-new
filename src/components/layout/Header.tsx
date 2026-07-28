@@ -4,6 +4,7 @@ import { business } from '@/config/business';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useFocusTrap } from '@/hooks/useFocusTrap';
 import { ScrollProgress } from './ScrollProgress';
+import logoMark from '@/assets/logo-mark.png';
 import './Header.css';
 
 const IDS = navigation.map((n) => n.id);
@@ -41,12 +42,7 @@ export function Header() {
             }}
           >
             <span className="header__logo" aria-hidden="true">
-              <svg viewBox="0 0 40 40">
-                <path d="M20 5 L24 17 L16 17 Z" fill="var(--emerald)" />
-                <rect x="17.5" y="15" width="5" height="9" fill="var(--emerald)" />
-                <circle cx="20" cy="21" r="2.4" fill="var(--cream)" stroke="var(--brass)" strokeWidth="0.6" />
-                <path d="M8 33 L20 24 L32 33 Z" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinejoin="round" />
-              </svg>
+              <img src={logoMark} alt="" width="40" height="40" />
             </span>
             <span className="header__name">
               {business.name}

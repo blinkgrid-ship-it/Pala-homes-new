@@ -76,7 +76,11 @@ Date curated: 2026-07-24. Method: Wikimedia Commons API keyword search, hand-sel
 
 ## Branding
 
-- `public/favicon.svg`, `public/social-preview.svg` — original, created for this project.
-- The supplied Pala Homes logo (emerald spire + gold house wordmark) is referenced as a
-  simplified inline SVG in the header. Replace with the official asset before launch — see
-  `CONTENT_REQUIRED.md`.
+- `src/assets/logo-mark.png`, `src/assets/logo-full.png`, `public/favicon-32.png`,
+  `public/favicon-256.png` — cropped from the official Pala Homes logo file supplied
+  directly by the client (`src/assets/logo.png.jpeg`, the untouched original). Not
+  sourced from Wikimedia/Unsplash/any external search — client-provided brand asset.
+- `public/social-preview.svg` — original placeholder, created for this project;
+  still worth replacing with a proper OG image built from the new logo before launch.
+- `public/favicon.svg` — superseded by the PNG favicons above; no longer referenced,
+  kept only for reference and can be deleted.
