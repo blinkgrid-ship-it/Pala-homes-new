@@ -115,6 +115,15 @@ body { color: var(--ph-text); }
 [class*="AppHeader"] *, [class*="TopBarContainer"] *, [class*="Toolbar"] * {
   color: var(--ph-ivory);
 }
+/* the Publish split-button's dropdown menu (confirmed classes:
+   DropdownList, StyledMenuItem) is rendered nested inside the toolbar in
+   the DOM even though it visually pops up over the light page below — so
+   the rule above was leaking into it, making its text invisible on its
+   own light popup background. Force it back, !important to win outright. */
+[class*="DropdownList"],
+[class*="DropdownList"] * {
+  color: var(--ph-text) !important;
+}
 
 [class*="Sidebar"],
 [class*="CollectionTop"] {
