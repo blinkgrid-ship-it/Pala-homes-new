@@ -1,42 +1,43 @@
 /* ============================================================
    Pala Homes — Content Studio (Decap CMS) branding
-   Decap renders as plain DOM (not shadow DOM), using emotion CSS-in-JS
-   whose class names keep a readable component-name fragment (e.g.
-   "css-<hash>-LoginButton-..."), so [class*="Name"] substring selectors
-   stay reasonably stable across version bumps.
+   Light theme: warm ivory/limestone content area with emerald/gold
+   brand accents, dark ink top bar for hierarchy. Chosen deliberately —
+   native <select> dropdown POPUPS are rendered by the browser/OS and
+   are always light, so a light admin theme means they blend in
+   naturally instead of flashing white against a dark page.
 
-   Two things learned from live screenshots of the real, logged-in
-   dashboard:
-   1. Decap's own modals (e.g. the Media Library) are portaled as a
-      SIBLING of #nc-root, not a descendant — so any rule scoped to
-      "#nc-root ..." never reaches them. Generic element rules below are
-      intentionally NOT scoped to #nc-root for that reason.
-   2. Some surface backgrounds are set via inline style (not a class), so
-      a plain class selector can never override them — only a
-      stylesheet rule with !important beats a non-!important inline
-      style, which is what the "stubborn white surface" rule below does.
+   Decap renders as plain DOM (not shadow DOM), using emotion CSS-in-JS
+   whose class names keep a readable component-name fragment, so
+   [class*="Name"] substring selectors stay reasonably stable. Several
+   selectors below (ReactModal__*, ControlContainer, ControlTopbar,
+   ControlPaneContainer, PreviewPaneContainer, ViewControls) were
+   confirmed live via devtools against the real logged-in dashboard.
    ============================================================ */
 
 :root {
-  --ph-ink: #071112;
-  --ph-ink-soft: #0a2023;
-  --ph-ink-raised: #123438;
-  --ph-ivory: #f7f2e7;
+  --ph-ink: #1a2e29;
+  --ph-ink-soft: #2c433c;
+  --ph-ivory: #faf6ec;
+  --ph-limestone: #f1e9d8;
+  --ph-card: #fffdf8;
   --ph-gold: #d9a441;
   --ph-brass: #b8863e;
   --ph-emerald: #1f6b52;
   --ph-emerald-deep: #123e32;
-  --ph-hairline: rgba(207, 226, 220, 0.16);
+  --ph-hairline: rgba(31, 107, 82, 0.16);
+  --ph-text: #1c2b27;
+  --ph-text-muted: #5b6b64;
 }
 
 html, body {
-  background: radial-gradient(120% 100% at 15% 0%, #0d292c 0%, #071719 55%, #050f10 100%) !important;
+  background: var(--ph-limestone) !important;
   min-height: 100%;
 }
 
 body, body * {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
+body { color: var(--ph-text); }
 
 /* ---------- branded splash shown while decap-cms.js downloads ---------- */
 #ph-admin-splash {
@@ -48,8 +49,8 @@ body, body * {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  background: radial-gradient(120% 100% at 15% 0%, #0d292c 0%, #071719 55%, #050f10 100%);
-  color: var(--ph-ivory);
+  background: var(--ph-limestone);
+  color: var(--ph-emerald-deep);
   font-family: 'Inter', system-ui, sans-serif;
   transition: opacity 0.4s ease;
 }
@@ -58,13 +59,13 @@ body, body * {
   font-family: 'Fraunces', Georgia, serif;
   font-size: 15px;
   letter-spacing: 0.02em;
-  color: rgba(247, 242, 231, 0.75);
+  color: var(--ph-text-muted);
 }
 #ph-admin-splash.is-hidden { opacity: 0; pointer-events: none; }
 
-/* ---------- authentication / login screen (verified live) ---------- */
+/* ---------- authentication / login screen ---------- */
 [class*="StyledAuthenticationPage"] {
-  background: transparent !important;
+  background: var(--ph-limestone) !important;
   gap: 28px !important;
 }
 [class*="IconWrapper-DecapLogoIcon"] svg { display: none; }
@@ -75,14 +76,14 @@ body, body * {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 6px 16px rgba(18, 62, 50, 0.25));
 }
 [class*="StyledAuthenticationPage"]::before {
   content: 'Pala Homes — Content Studio';
   font-family: 'Fraunces', Georgia, serif;
   font-weight: 600;
   font-size: 22px;
-  color: var(--ph-ivory);
+  color: var(--ph-emerald-deep);
   letter-spacing: -0.01em;
 }
 [class*="LoginButton"] {
@@ -94,135 +95,116 @@ body, body * {
   border: none !important;
   border-radius: 30px !important;
   padding: 13px 30px !important;
-  box-shadow: 0 10px 26px rgba(31, 107, 82, 0.35);
+  box-shadow: 0 10px 26px rgba(31, 107, 82, 0.25);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 [class*="LoginButton"]:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(31, 107, 82, 0.5);
+  box-shadow: 0 14px 32px rgba(31, 107, 82, 0.35);
 }
 
-/* ---------- dashboard chrome: best-effort named layer ---------- */
+/* ---------- dashboard chrome ---------- */
+/* dark top bar for hierarchy/branding against the light content below */
 [class*="AppHeader"],
 [class*="TopBarContainer"],
 [class*="Toolbar"] {
-  background: var(--ph-ink-soft) !important;
-  border-color: var(--ph-hairline) !important;
+  background: var(--ph-ink) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--ph-ivory) !important;
 }
+[class*="AppHeader"] *, [class*="TopBarContainer"] *, [class*="Toolbar"] * {
+  color: var(--ph-ivory);
+}
+
 [class*="Sidebar"],
 [class*="CollectionTop"] {
-  background: var(--ph-ink) !important;
+  background: var(--ph-limestone) !important;
   border-color: var(--ph-hairline) !important;
 }
 [class*="Card-"],
 [class*="EntryListing"] {
-  background: var(--ph-ink-soft) !important;
-  border-color: var(--ph-hairline) !important;
+  background: var(--ph-card) !important;
+  border: 1px solid var(--ph-hairline) !important;
   border-radius: 12px !important;
+  box-shadow: 0 2px 10px rgba(31, 107, 82, 0.06);
 }
 [class*="EditorInterface"],
 [class*="EditorContainer"],
-[class*="EditorContentPane"],
-[class*="EditorControlPane"],
-[class*="ControlPaneContainer"],
-[class*="ObjectControl"],
-[class*="ListControl"] {
-  background: var(--ph-ink) !important;
+[class*="EditorContentPane"] {
+  background: var(--ph-limestone) !important;
 }
-/* Decap's media library modal — confirmed live to use react-modal, whose
-   class names are fixed library constants, not hashed, so these are
-   reliable (unlike the [class*="Name"] guesses elsewhere in this file) */
-.ReactModal__Overlay {
-  background: rgba(4, 10, 11, 0.75) !important;
-}
-.ReactModal__Content {
-  background: var(--ph-ink-soft) !important;
-  border-color: var(--ph-hairline) !important;
-  color: var(--ph-ivory) !important;
-}
-.ReactModal__Content h1,
-.ReactModal__Content h2,
-.ReactModal__Content h3 {
-  color: var(--ph-ivory) !important;
-}
-.ReactModal__Content button {
-  background: var(--ph-ink-raised);
-  color: var(--ph-ivory);
-  border: 1px solid var(--ph-hairline);
-}
-.ReactModal__Content input[type="search"],
-.ReactModal__Content input[type="text"] {
-  background: rgba(247, 242, 231, 0.06) !important;
-}
-
-/* field wrapper containers — confirmed live via devtools. The select
-   widget itself is a native <select>, but its wrapping container carries
-   its own opaque background, which is what was actually showing through
-   as "white" around/behind the dropdown */
 [class*="ControlContainer"],
 [class*="ControlTopbar"],
 [class*="ControlPaneContainer"],
 [class*="PreviewPaneContainer"],
 [class*="ViewControls"] {
-  background: var(--ph-ink) !important;
+  background: var(--ph-limestone) !important;
   border-color: var(--ph-hairline) !important;
 }
+[class*="ObjectControl"],
+[class*="ListControl"] {
+  background: var(--ph-card) !important;
+}
 
-/* belt-and-braces: some surfaces are painted via inline style, which a
-   plain class selector can never win against — only !important here can */
+/* Media Library modal — react-modal, fixed non-hashed class names */
+.ReactModal__Overlay {
+  background: rgba(26, 46, 41, 0.55) !important;
+}
+.ReactModal__Content {
+  background: var(--ph-card) !important;
+  border-color: var(--ph-hairline) !important;
+  color: var(--ph-text) !important;
+}
+.ReactModal__Content h1,
+.ReactModal__Content h2,
+.ReactModal__Content h3 {
+  color: var(--ph-emerald-deep) !important;
+}
+.ReactModal__Content button {
+  background: var(--ph-limestone);
+  color: var(--ph-text);
+  border: 1px solid var(--ph-hairline);
+}
+
+/* belt-and-braces: a few surfaces are painted via inline style, which a
+   plain class selector can never win against — only !important here can.
+   Kept as a light-theme-appropriate tint now that the base is light. */
 [style*="background-color: rgb(255, 255, 255)"],
 [style*="background-color: #fff"],
 [style*="background: #fff"],
 [style*="background: white"],
-[style*="background-color: white"],
-[style*="background-color: rgb(250, 250, 250)"],
-[style*="background-color: rgb(249, 249, 249)"],
-[style*="background-color: rgb(245, 246, 247)"] {
-  background-color: var(--ph-ink-soft) !important;
+[style*="background-color: white"] {
+  background-color: var(--ph-card) !important;
 }
 
 /* ---------- generic fallback layer: name-agnostic, applies everywhere
-   (deliberately NOT scoped to #nc-root — see note above) ---------- */
-body {
-  /* base text colour, inherited — deliberately NOT forced onto every div/
-     span/p, since several of Decap's own status labels (Published, saved,
-     delete) already carry meaningful semantic colours worth keeping */
-  color: var(--ph-ivory);
-}
+   (deliberately NOT scoped to #nc-root — Decap portals modals as a
+   sibling of it, so a scoped rule would miss them) ---------- */
 h1, h2, h3 {
   font-family: 'Fraunces', Georgia, serif !important;
-  color: var(--ph-ivory);
+  color: var(--ph-emerald-deep);
 }
-a { color: var(--ph-gold); }
+a { color: var(--ph-emerald); }
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"],
 input[type="search"],
-textarea {
-  background: rgba(247, 242, 231, 0.06) !important;
-  border: 1px solid var(--ph-hairline) !important;
-  color: var(--ph-ivory) !important;
-  border-radius: 8px !important;
-}
+textarea,
 select {
-  /* solid, not a faint tint — a <select>'s own background needs to read
-     correctly regardless of what its (also-overridden) wrapper looks like */
-  background: var(--ph-ink-soft) !important;
+  background: var(--ph-card) !important;
   border: 1px solid var(--ph-hairline) !important;
-  color: var(--ph-ivory) !important;
+  color: var(--ph-text) !important;
   border-radius: 8px !important;
 }
-select option {
-  background: var(--ph-ink-soft);
-  color: var(--ph-ivory);
-}
-input::placeholder, textarea::placeholder { color: rgba(247, 242, 231, 0.4) !important; }
+select option { background: var(--ph-card); color: var(--ph-text); }
+input::placeholder, textarea::placeholder { color: var(--ph-text-muted) !important; opacity: 0.7; }
 input:focus, textarea:focus, select:focus {
-  border-color: var(--ph-gold) !important;
+  border-color: var(--ph-emerald) !important;
   outline: none !important;
+  box-shadow: 0 0 0 3px rgba(31, 107, 82, 0.12);
 }
 button:not([class*="LoginButton"]) {
   border-radius: 8px;
 }
-::selection { background: rgba(31, 107, 82, 0.4); }
+::selection { background: rgba(217, 164, 65, 0.35); }
