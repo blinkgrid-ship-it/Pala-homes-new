@@ -1,0 +1,42 @@
+{
+  "id": "casa-nila",
+  "index": 2,
+  "name": "Casa Nila",
+  "nameMalayalam": "കാസ നീല",
+  "kind": "canal-villa",
+  "status": "Waterfront Concept",
+  "theme": "Waterfront",
+  "market": "Fort Lauderdale",
+  "location": "Fort Lauderdale, Florida",
+  "variant": "editorial-split",
+  "palette": {
+    "sky": "#f6e4c4",
+    "skyLow": "#d6996a",
+    "structure": "#f3efe6",
+    "structureShade": "#d8cdb8",
+    "accent": "#a67c2e",
+    "ground": "#2b7c86",
+    "glass": "#1f6b52"
+  },
+  "statement": "A canal-front villa of white limestone and timber — calm water, warm luxury.",
+  "narrative": "Casa Nila sits low and confident on the water. A double-height living room dissolves into the terrace through sliding glass, while timber soffits and tropical landscaping keep the mood warm rather than clinical. The private dock makes the canal an extension of the home.",
+  "materials": ["White limestone", "Timber soffits", "Sliding glass walls", "Tropical planting"],
+  "specs": {
+    "beds": 4,
+    "baths": 4.5,
+    "sqft": 4100,
+    "highlights": ["Pool & private dock", "Outdoor kitchen", "Double-height living"]
+  },
+  "priceRange": { "low": 3100000, "high": 3700000 },
+  "views": [
+    { "id": "exterior-hero", "label": "Waterfront", "category": "Exterior", "time": "golden", "render": "exterior-hero", "caption": "Canal-front villa at golden hour", "alt": "a low white limestone villa reflected in a calm canal", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/3D_Rendering_of_Modern_Luxury_Villa_Exterior_with_Pool.jpg/1920px-3D_Rendering_of_Modern_Luxury_Villa_Exterior_with_Pool.jpg" },
+    { "id": "entrance", "label": "Entrance", "category": "Exterior", "time": "day", "render": "entrance", "caption": "Front entrance angle", "alt": "a timber-lined entrance framed by tropical planting", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Black_Ember_residence_-_AKL_Architects.jpg/1920px-Black_Ember_residence_-_AKL_Architects.jpg" },
+    { "id": "pool-dock", "label": "Pool", "category": "Outdoor", "time": "day", "render": "pool", "caption": "Pool and dock view", "alt": "an infinity-edge pool leading to a private boat dock", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Infinity_Edge_Pool%2C_Mauritius.JPG/1920px-Infinity_Edge_Pool%2C_Mauritius.JPG" },
+    { "id": "living-room", "label": "Living", "category": "Living", "time": "day", "render": "living", "caption": "Double-height living room", "alt": "a double-height living room opening to the water", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Modern_luxury_living_room_with_kitchen_interior.jpg/1920px-Modern_luxury_living_room_with_kitchen_interior.jpg" },
+    { "id": "kitchen-dining", "label": "Kitchen", "category": "Kitchen", "time": "day", "render": "kitchen", "caption": "Kitchen and dining area", "alt": "a bright kitchen and dining area with timber ceiling", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Blue_white_kitchen_interior_%28Unsplash%29.jpg/1920px-Blue_white_kitchen_interior_%28Unsplash%29.jpg" },
+    { "id": "primary-bedroom", "label": "Suite", "category": "Bedrooms", "time": "golden", "render": "bedroom", "caption": "Primary bedroom", "alt": "a serene primary bedroom facing the canal", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Canopy_bed_of_Amantaka_Suite_in_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos.jpg/1920px-Canopy_bed_of_Amantaka_Suite_in_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos.jpg" },
+    { "id": "primary-bathroom", "label": "Bath", "category": "Bathrooms", "time": "day", "render": "bathroom", "caption": "Primary bathroom", "alt": "a limestone bathroom with garden outlook", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Bathroom_of_Khan_Pool_Suite_in_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos.jpg/1920px-Bathroom_of_Khan_Pool_Suite_in_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos.jpg" },
+    { "id": "sunset-canal", "label": "Sunset", "category": "Outdoor", "time": "dusk", "render": "pool", "caption": "Sunset canal view", "alt": "the pool terrace and canal at dusk", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Infinity_pool_at_Coco_Ocean_Resort_%26_Spa_%28The_Gambia%29_%2823202380634%29.jpg/1920px-Infinity_pool_at_Coco_Ocean_Resort_%26_Spa_%28The_Gambia%29_%2823202380634%29.jpg" },
+    { "id": "night-exterior", "label": "Night", "category": "Evening", "time": "evening", "render": "evening", "caption": "Night exterior with interior lights", "alt": "the villa at night glowing over the water", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Dreams-Curacao-Infinity-Pool.jpg/1920px-Dreams-Curacao-Infinity-Pool.jpg" }
+  ]
+}

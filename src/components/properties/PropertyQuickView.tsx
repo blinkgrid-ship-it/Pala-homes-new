@@ -5,7 +5,7 @@ import { PropertyAngleViewer } from './PropertyAngleViewer';
 import { ConceptBadge } from './ConceptBadge';
 import { site } from '@/config/site';
 import { business, whatsappLink } from '@/config/business';
-import { formatRange } from '@/data/conceptProperties';
+import { formatRange } from '@/content/loader';
 import './PropertyQuickView.css';
 
 interface Props {

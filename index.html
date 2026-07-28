@@ -9,7 +9,7 @@
       name="description"
       content="Pala Homes presents an original collection of Florida architectural concepts — cinematic visualisations combining modern Florida luxury with understated Kerala warmth. Concept demonstration, not active listings."
     />
-    <meta name="theme-color" content="#100E0B" />
+    <meta name="theme-color" content="#071112" />
     <link rel="canonical" href="https://palahomes.example" />
 
     <!-- Open Graph / social preview -->
@@ -37,5 +37,24 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!--
+      Netlify Identity: required so that the invite/reset-password links the
+      owner receives by email (which land on this root page as
+      `/#invite_token=...`) can open the login widget and then hand off to the
+      CMS at /admin. Harmless no-op if Identity isn't enabled on this site.
+    -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', (user) => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>

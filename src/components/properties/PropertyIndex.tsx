@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { Property } from '@/types/property';
-import { conceptProperties, formatRange } from '@/data/conceptProperties';
+import { properties, formatRange } from '@/content/loader';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { ImageWithFallback } from '@/components/ui/ImageWithFallback';
 import { ConceptBadge } from './ConceptBadge';
@@ -29,7 +29,7 @@ const FILTERS: Filter[] = [
 /** Editorial, asymmetric index of the collection with restrained filtering. */
 export function PropertyIndex({ onExploreAngles, onStepInside }: Props) {
   const [active, setActive] = useState(0);
-  const filtered = useMemo(() => conceptProperties.filter(FILTERS[active].test), [active]);
+  const filtered = useMemo(() => properties.filter(FILTERS[active].test), [active]);
 
   return (
     <section id="index" className="pindex" aria-labelledby="pindex-title">

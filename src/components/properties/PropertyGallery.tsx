@@ -4,7 +4,7 @@ import { Modal } from '@/components/ui/Modal';
 import { ImageWithFallback } from '@/components/ui/ImageWithFallback';
 import { ConceptBadge } from './ConceptBadge';
 import { site } from '@/config/site';
-import { formatRange } from '@/data/conceptProperties';
+import { formatRange } from '@/content/loader';
 import './PropertyGallery.css';
 
 interface Props {

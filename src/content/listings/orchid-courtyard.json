@@ -1,0 +1,41 @@
+{
+  "id": "orchid-courtyard",
+  "index": 3,
+  "name": "Orchid Courtyard House",
+  "kind": "courtyard",
+  "status": "Courtyard Concept",
+  "theme": "Courtyard",
+  "market": "Orlando",
+  "location": "Orlando, Florida",
+  "variant": "presentation-board",
+  "palette": {
+    "sky": "#f7e6c6",
+    "skyLow": "#e0b072",
+    "structure": "#e7d4b6",
+    "structureShade": "#c79a6a",
+    "accent": "#c07a4e",
+    "ground": "#6d8f52",
+    "glass": "#1f6b52"
+  },
+  "statement": "A private courtyard residence — warm stucco, a still reflecting pool, dappled light.",
+  "narrative": "Orchid Courtyard turns inward. Rooms wrap a shaded central courtyard with a still reflecting pool, a restrained nod to Kerala courtyard living translated into warm Florida stucco and clay tones. Natural timber and soft daylight make it family-oriented without losing composure.",
+  "materials": ["Warm stucco", "Clay-toned surfaces", "Natural timber", "Reflecting pool"],
+  "specs": {
+    "beds": 4,
+    "baths": 3.5,
+    "sqft": 3450,
+    "highlights": ["Private courtyard", "Home office", "Garden pavilion"]
+  },
+  "priceRange": { "low": 1400000, "high": 1800000 },
+  "views": [
+    { "id": "exterior-hero", "label": "Front", "category": "Exterior", "time": "golden", "render": "exterior-hero", "caption": "Front architectural view", "alt": "a warm stucco courtyard house behind low planting", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Modern_residential_facade_%28Unsplash%29.jpg/1920px-Modern_residential_facade_%28Unsplash%29.jpg" },
+    { "id": "courtyard", "label": "Courtyard", "category": "Outdoor", "time": "day", "render": "courtyard", "caption": "Courtyard wide view", "alt": "a shaded central courtyard with a still reflecting pool", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Courtyards_of_SPB_03.jpg/1920px-Courtyards_of_SPB_03.jpg" },
+    { "id": "entrance-walk", "label": "Entrance", "category": "Exterior", "time": "day", "render": "entrance", "caption": "Entrance walkway", "alt": "a timber-shaded entrance walkway beside the garden", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Bright_white_building_facade_%28Unsplash%29.jpg/1920px-Bright_white_building_facade_%28Unsplash%29.jpg" },
+    { "id": "living-room", "label": "Living", "category": "Living", "time": "day", "render": "living", "caption": "Living room opening to the courtyard", "alt": "a living room that slides open onto the courtyard", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Modern_wooden_house_interior_%28Unsplash%29.jpg/1920px-Modern_wooden_house_interior_%28Unsplash%29.jpg" },
+    { "id": "kitchen", "label": "Kitchen", "category": "Kitchen", "time": "day", "render": "kitchen", "caption": "Kitchen", "alt": "a warm timber-and-stone kitchen", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Elegant_dining_setup_with_cozy_atmosphere_in_a_modern_room_featuring_gourmet_dishes_and_elegant_glassware.jpg/1920px-Elegant_dining_setup_with_cozy_atmosphere_in_a_modern_room_featuring_gourmet_dishes_and_elegant_glassware.jpg" },
+    { "id": "primary-bedroom", "label": "Suite", "category": "Bedrooms", "time": "golden", "render": "bedroom", "caption": "Primary bedroom", "alt": "a restful primary bedroom overlooking the garden", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/NY_loft_bedroom_%28Unsplash%29.jpg/1920px-NY_loft_bedroom_%28Unsplash%29.jpg" },
+    { "id": "primary-bathroom", "label": "Bath", "category": "Bathrooms", "time": "day", "render": "bathroom", "caption": "Bathroom", "alt": "a naturally lit bathroom with clay tones", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Bathtub_of_Khan_Pool_Suite_in_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos.jpg/1920px-Bathtub_of_Khan_Pool_Suite_in_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos.jpg" },
+    { "id": "garden-pavilion", "label": "Pavilion", "category": "Outdoor", "time": "golden", "render": "pool", "caption": "Garden pavilion", "alt": "a timber garden pavilion beside the reflecting pool", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Infinity_Pool_in_Buhi_Resort.jpg/1920px-Infinity_Pool_in_Buhi_Resort.jpg" },
+    { "id": "dusk-courtyard", "label": "Dusk", "category": "Evening", "time": "dusk", "render": "evening", "caption": "Dusk courtyard view", "alt": "the courtyard at dusk with warm lantern light", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Infinity_pool_at_The_Lalu_Resort%2C_Sun_Moon_Lake%2C_Taiwan.jpg/1920px-Infinity_pool_at_The_Lalu_Resort%2C_Sun_Moon_Lake%2C_Taiwan.jpg" }
+  ]
+}

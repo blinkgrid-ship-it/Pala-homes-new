@@ -1,0 +1,111 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Netlify Identity + Git Gateway (enabled in the Netlify dashboard, not here)
+# handles who can log in and commits their edits back to this repo on `main`,
+# which triggers a normal rebuild. No separate server or database involved.
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+publish_mode: simple
+
+collections:
+  - name: "listings"
+    label: "Properties"
+    label_singular: "Property"
+    folder: "src/content/listings"
+    create: true
+    delete: true
+    slug: "{{fields.id}}"
+    extension: "json"
+    format: "json"
+    identifier_field: name
+    summary: "{{name}} — {{market}} ({{status}})"
+    fields:
+      # ---- structural fields: kept out of the owner's way ----
+      - { label: "Internal ID", name: "id", widget: "hidden", default: "new-property" }
+      - { label: "Architectural Family", name: "kind", widget: "hidden", default: "coastal-estate" }
+      - { label: "Page Layout Variant", name: "variant", widget: "hidden", default: "full-bleed" }
+      - label: "Render Palette"
+        name: "palette"
+        widget: "hidden"
+        default:
+          sky: "#f6ddb4"
+          skyLow: "#dfa06a"
+          structure: "#f0e7d5"
+          structureShade: "#d3c3a4"
+          accent: "#a67c2e"
+          ground: "#3a8f86"
+          glass: "#1f6b52"
+
+      # ---- content the owner edits ----
+      - { label: "Display Order (1 = first)", name: "index", widget: "number", value_type: "int" }
+      - { label: "Property Name", name: "name", widget: "string" }
+      - { label: "Malayalam Name (optional)", name: "nameMalayalam", widget: "string", required: false }
+      - label: "Status Label"
+        name: "status"
+        widget: "select"
+        options:
+          - "Waterfront Concept"
+          - "Urban Residence Concept"
+          - "Courtyard Concept"
+          - "Coastal Estate Concept"
+          - "Architectural Study"
+      - label: "Theme"
+        name: "theme"
+        widget: "select"
+        options: ["Waterfront", "Urban", "Courtyard", "Coastal"]
+      - label: "Florida Market"
+        name: "market"
+        widget: "select"
+        options: ["Miami", "Fort Lauderdale", "Orlando", "Palm Beach", "Tampa", "Jacksonville"]
+      - { label: "Location (as displayed)", name: "location", widget: "string", hint: "e.g. \"Miami, Florida\"" }
+      - { label: "Headline Statement", name: "statement", widget: "text", hint: "One sentence, shown during the opening reveal." }
+      - { label: "Full Narrative", name: "narrative", widget: "text", hint: "Longer description shown in quick-view and the index." }
+      - { label: "Material Palette (tags)", name: "materials", widget: "list", hint: "Short phrases, e.g. \"Warm limestone\"." }
+
+      - label: "Specifications"
+        name: "specs"
+        widget: "object"
+        fields:
+          - { label: "Bedrooms", name: "beds", widget: "number", value_type: "int" }
+          - { label: "Bathrooms", name: "baths", widget: "number", value_type: "float", hint: "Use .5 for a half-bath, e.g. 3.5" }
+          - { label: "Approx. Square Feet", name: "sqft", widget: "number", value_type: "int" }
+          - { label: "Key Highlights", name: "highlights", widget: "list", hint: "Short phrases, e.g. \"Private terrace\"." }
+
+      - label: "Illustrative Price Range"
+        name: "priceRange"
+        widget: "object"
+        hint: "Whole dollar amounts, e.g. 2400000 for $2.4M. Never a firm asking price."
+        fields:
+          - { label: "Low", name: "low", widget: "number", value_type: "int" }
+          - { label: "High", name: "high", widget: "number", value_type: "int" }
+
+      - label: "Photo Angles"
+        name: "views"
+        widget: "list"
+        summary: "{{fields.label}}"
+        hint: "Each angle needs a label and, ideally, a real photo. Angles left without a photo show a placeholder illustration instead."
+        default:
+          - { id: "exterior-hero", label: "Front", category: "Exterior", time: "golden", render: "exterior-hero", caption: "Front exterior", alt: "" }
+          - { id: "living-room", label: "Living", category: "Living", time: "day", render: "living", caption: "Main living space", alt: "" }
+          - { id: "kitchen-dining", label: "Kitchen", category: "Kitchen", time: "day", render: "kitchen", caption: "Kitchen and dining", alt: "" }
+          - { id: "primary-bedroom", label: "Suite", category: "Bedrooms", time: "golden", render: "bedroom", caption: "Primary bedroom", alt: "" }
+          - { id: "primary-bathroom", label: "Bath", category: "Bathrooms", time: "day", render: "bathroom", caption: "Primary bathroom", alt: "" }
+          - { id: "outdoor", label: "Outdoor", category: "Outdoor", time: "golden", render: "pool", caption: "Outdoor / pool area", alt: "" }
+          - { id: "evening-view", label: "Evening", category: "Evening", time: "evening", render: "evening", caption: "Evening view", alt: "" }
+        fields:
+          - { label: "Internal ID", name: "id", widget: "hidden", default: "view" }
+          - { label: "Room Category", name: "category", widget: "hidden", default: "Exterior" }
+          - { label: "Lighting Mood", name: "time", widget: "hidden", default: "day" }
+          - { label: "Render Composition", name: "render", widget: "hidden", default: "exterior-hero" }
+          - { label: "Angle Label", name: "label", widget: "string", hint: "Short, e.g. \"Front\", \"Pool\", \"Suite\"." }
+          - { label: "Caption", name: "caption", widget: "string" }
+          - { label: "Accessible Description", name: "alt", widget: "string", hint: "Plain description for screen readers, e.g. \"a pool terrace at sunset\". Don't repeat the property name — that's added automatically." }
+          - label: "Photo"
+            name: "image"
+            widget: "image"
+            required: false
+            hint: "If left empty, this angle falls back to a placeholder illustration."

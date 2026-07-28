@@ -1,5 +1,5 @@
 import type { Property } from '@/types/property';
-import { conceptProperties } from '@/data/conceptProperties';
+import { properties } from '@/content/loader';
 import { PropertyScene } from './PropertyScene';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 export function PropertyReel({ onExploreAngles, onStepInside, onDiscuss }: Props) {
   return (
     <section id="collection" aria-label="Concept property collection">
-      {conceptProperties.map((p) => (
+      {properties.map((p) => (
         <PropertyScene
           key={p.id}
           property={p}

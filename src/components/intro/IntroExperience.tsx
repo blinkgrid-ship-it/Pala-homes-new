@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { business } from '@/config/business';
-import { conceptProperties } from '@/data/conceptProperties';
+import { properties } from '@/content/loader';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { ArchScene } from '@/components/ui/ArchScene';
 import './IntroExperience.css';
@@ -17,7 +17,7 @@ interface Props {
  */
 export function IntroExperience({ onEnter }: Props) {
   const reduced = useReducedMotion();
-  const hero = conceptProperties[0];
+  const hero = properties[0];
   const heroView = { render: 'exterior-hero' as const, time: 'dusk' as const };
 
   const seq = (delay: number) =>

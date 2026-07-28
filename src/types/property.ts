@@ -3,8 +3,9 @@
  *
  * These types are deliberately generic so that verified real-listing data can
  * replace the concept collection later without touching the UI layer. See
- * `src/data/conceptProperties.ts` for the concept dataset and
- * `CONTENT_REQUIRED.md` for the fields that must be supplied before launch.
+ * `src/content/listings/*.json` for the concept dataset (loaded through
+ * `src/content/loader.ts`) and `CONTENT_REQUIRED.md` for the fields that must
+ * be supplied before launch.
  */
 
 /** Architectural family — drives the parametric render engine (ArchScene). */

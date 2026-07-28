@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { ArchScene } from '@/components/ui/ArchScene';
-import { conceptProperties } from '@/data/conceptProperties';
+import { properties } from '@/content/loader';
 import { business, whatsappLink } from '@/config/business';
 import { site } from '@/config/site';
 import './ContactSection.css';
@@ -64,7 +64,7 @@ export function ContactSection({ prefill }: Props) {
     window.setTimeout(() => setStatus('success'), 900);
   };
 
-  const closingHero = conceptProperties[1];
+  const closingHero = properties[1];
 
   return (
     <section id="contact" className="contact" aria-labelledby="contact-title">

@@ -3,7 +3,7 @@ import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import type { Property } from '@/types/property';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { site } from '@/config/site';
-import { formatRange } from '@/data/conceptProperties';
+import { formatRange } from '@/content/loader';
 import { ImageWithFallback } from '@/components/ui/ImageWithFallback';
 import { CountUp } from '@/components/ui/CountUp';
 import { ConceptBadge } from './ConceptBadge';
