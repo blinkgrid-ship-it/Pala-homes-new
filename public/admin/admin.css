@@ -176,6 +176,17 @@ body { color: var(--ph-text); }
 [style*="background-color: white"] {
   background-color: var(--ph-card) !important;
 }
+/* these are dropdown/menu popups (e.g. the Publish split-button menu)
+   whose text was originally white for Decap's own dark popup — since we
+   just forced the popup background light, its text needs to go dark too,
+   or it's invisible (white-on-white) */
+[style*="background-color: rgb(255, 255, 255)"] *,
+[style*="background-color: #fff"] *,
+[style*="background: #fff"] *,
+[style*="background: white"] *,
+[style*="background-color: white"] * {
+  color: var(--ph-text) !important;
+}
 
 /* ---------- generic fallback layer: name-agnostic, applies everywhere
    (deliberately NOT scoped to #nc-root — Decap portals modals as a
