@@ -1,20 +1,31 @@
 /* ============================================================
    Pala Homes — Content Studio (Decap CMS) branding
-   Decap renders as plain DOM (not shadow DOM) into #nc-root using
-   emotion CSS-in-JS, whose class names keep a readable component-name
-   fragment (e.g. "css-<hash>-LoginButton-..."), so [class*="Name"]
-   substring selectors stay reasonably stable across version bumps.
-   Verified live against the rendered login screen; dashboard rules
-   below use Decap's documented component names as a best-effort layer,
-   backed by generic element rules that work regardless of naming.
+   Decap renders as plain DOM (not shadow DOM), using emotion CSS-in-JS
+   whose class names keep a readable component-name fragment (e.g.
+   "css-<hash>-LoginButton-..."), so [class*="Name"] substring selectors
+   stay reasonably stable across version bumps.
+
+   Two things learned from live screenshots of the real, logged-in
+   dashboard:
+   1. Decap's own modals (e.g. the Media Library) are portaled as a
+      SIBLING of #nc-root, not a descendant — so any rule scoped to
+      "#nc-root ..." never reaches them. Generic element rules below are
+      intentionally NOT scoped to #nc-root for that reason.
+   2. Some surface backgrounds are set via inline style (not a class), so
+      a plain class selector can never override them — only a
+      stylesheet rule with !important beats a non-!important inline
+      style, which is what the "stubborn white surface" rule below does.
    ============================================================ */
 
 :root {
   --ph-ink: #071112;
   --ph-ink-soft: #0a2023;
+  --ph-ink-raised: #123438;
   --ph-ivory: #f7f2e7;
   --ph-gold: #d9a441;
   --ph-brass: #b8863e;
+  --ph-emerald: #1f6b52;
+  --ph-emerald-deep: #123e32;
   --ph-hairline: rgba(207, 226, 220, 0.16);
 }
 
@@ -23,7 +34,7 @@ html, body {
   min-height: 100%;
 }
 
-#nc-root, #nc-root * {
+body, body * {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -51,12 +62,11 @@ html, body {
 }
 #ph-admin-splash.is-hidden { opacity: 0; pointer-events: none; }
 
-/* ---------- authentication / login screen ---------- */
+/* ---------- authentication / login screen (verified live) ---------- */
 [class*="StyledAuthenticationPage"] {
   background: transparent !important;
   gap: 28px !important;
 }
-/* swap Decap's own wordmark for the Pala Homes mark */
 [class*="IconWrapper-DecapLogoIcon"] svg { display: none; }
 [class*="IconWrapper-DecapLogoIcon"] {
   width: 64px;
@@ -79,20 +89,20 @@ html, body {
   font-family: 'Fraunces', Georgia, serif !important;
   font-weight: 600 !important;
   font-size: 15px !important;
-  color: var(--ph-ink) !important;
-  background: linear-gradient(120deg, var(--ph-gold), var(--ph-brass)) !important;
+  color: var(--ph-ivory) !important;
+  background: linear-gradient(120deg, var(--ph-emerald), var(--ph-emerald-deep)) !important;
   border: none !important;
   border-radius: 30px !important;
   padding: 13px 30px !important;
-  box-shadow: 0 10px 26px rgba(217, 164, 65, 0.28);
+  box-shadow: 0 10px 26px rgba(31, 107, 82, 0.35);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 [class*="LoginButton"]:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(217, 164, 65, 0.4);
+  box-shadow: 0 14px 32px rgba(31, 107, 82, 0.5);
 }
 
-/* ---------- dashboard chrome (best-effort: documented Decap component names) ---------- */
+/* ---------- dashboard chrome: best-effort named layer ---------- */
 [class*="AppHeader"],
 [class*="TopBarContainer"],
 [class*="Toolbar"] {
@@ -110,36 +120,68 @@ html, body {
   border-color: var(--ph-hairline) !important;
   border-radius: 12px !important;
 }
+[class*="EditorInterface"],
+[class*="EditorContainer"],
+[class*="EditorContentPane"],
 [class*="EditorControlPane"],
+[class*="ControlPaneContainer"],
 [class*="ObjectControl"],
 [class*="ListControl"] {
-  background: var(--ph-ink-soft) !important;
+  background: var(--ph-ink) !important;
+}
+/* Decap's media library / any modal it portals outside #nc-root */
+[class*="MediaLibraryModal"],
+[class*="ModalBody"],
+[class*="DialogContent"],
+[class*="Dialog-"] {
+  background: var(--ph-ink) !important;
+  color: var(--ph-ivory) !important;
 }
 
-/* ---------- generic fallback layer: always applies, name-agnostic ---------- */
-#nc-root h1, #nc-root h2, #nc-root h3 {
+/* belt-and-braces: some surfaces are painted via inline style, which a
+   plain class selector can never win against — only !important here can */
+[style*="background-color: rgb(255, 255, 255)"],
+[style*="background-color: #fff"],
+[style*="background: #fff"],
+[style*="background: white"],
+[style*="background-color: white"],
+[style*="background-color: rgb(250, 250, 250)"],
+[style*="background-color: rgb(249, 249, 249)"],
+[style*="background-color: rgb(245, 246, 247)"] {
+  background-color: var(--ph-ink-soft) !important;
+}
+
+/* ---------- generic fallback layer: name-agnostic, applies everywhere
+   (deliberately NOT scoped to #nc-root — see note above) ---------- */
+body {
+  /* base text colour, inherited — deliberately NOT forced onto every div/
+     span/p, since several of Decap's own status labels (Published, saved,
+     delete) already carry meaningful semantic colours worth keeping */
+  color: var(--ph-ivory);
+}
+h1, h2, h3 {
   font-family: 'Fraunces', Georgia, serif !important;
   color: var(--ph-ivory);
 }
-#nc-root a { color: var(--ph-gold); }
-#nc-root input[type="text"],
-#nc-root input[type="email"],
-#nc-root input[type="password"],
-#nc-root input[type="number"],
-#nc-root textarea,
-#nc-root select {
-  background: rgba(247, 242, 231, 0.05) !important;
+a { color: var(--ph-gold); }
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
+  background: rgba(247, 242, 231, 0.06) !important;
   border: 1px solid var(--ph-hairline) !important;
   color: var(--ph-ivory) !important;
   border-radius: 8px !important;
 }
-#nc-root input:focus,
-#nc-root textarea:focus,
-#nc-root select:focus {
+input::placeholder, textarea::placeholder { color: rgba(247, 242, 231, 0.4) !important; }
+input:focus, textarea:focus, select:focus {
   border-color: var(--ph-gold) !important;
   outline: none !important;
 }
-#nc-root button:not([class*="LoginButton"]) {
+button:not([class*="LoginButton"]) {
   border-radius: 8px;
 }
-#nc-root ::selection { background: rgba(217, 164, 65, 0.35); }
+::selection { background: rgba(31, 107, 82, 0.4); }

@@ -137,8 +137,8 @@
   transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast), background var(--dur-fast), color var(--dur-fast);
 }
 .scene__btn--primary {
-  color: var(--ink);
-  background: linear-gradient(120deg, var(--gold), var(--brass));
+  color: var(--btn-accent-text);
+  background: linear-gradient(120deg, var(--btn-accent), var(--btn-accent-deep));
   border-color: transparent;
 }
 .scene__btn--text {
@@ -152,7 +152,7 @@
 }
 .scene__btn:active { transform: scale(0.97); }
 @media (hover: hover) {
-  .scene__btn--primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(224, 180, 88, 0.4); }
+  .scene__btn--primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(31, 107, 82, 0.45); }
   .scene__btn:not(.scene__btn--primary):hover { border-color: var(--gold); color: var(--gold); }
   .scene__btn--text:hover { color: var(--gold); text-decoration-color: var(--gold); }
 }

@@ -25,6 +25,16 @@
   --burnished-brass: #b8863e;
   --sunset-clay: #b96e55;
 
+  /* jewel emerald — the primary button/CTA colour. Distinct from --tide-600
+     (a softer secondary hover accent) and from --sunset-clay (form error
+     colour), so buttons read as a deliberate action, not a re-skinned gold
+     or an accidental error state. Matches the logo mark's tower colour. */
+  --jewel-emerald: #1f6b52;
+  --jewel-emerald-deep: #123e32;
+  --btn-accent: var(--jewel-emerald);
+  --btn-accent-deep: var(--jewel-emerald-deep);
+  --btn-accent-text: var(--warm-ivory);
+
   /* legacy alias names — kept so existing components need no rewrite */
   --ink: #071112;
   --ink-soft: #111c1d;

@@ -23,6 +23,12 @@ collections:
     format: "json"
     identifier_field: name
     summary: "{{name}} — {{market}} ({{status}})"
+    editor:
+      # Decap's default preview column just dumps raw field values as text
+      # (including "No preview for widget 'hidden'" for every hidden field) —
+      # it's rendered in an iframe we can't restyle. Off gives a clean,
+      # full-width single-column editor instead.
+      preview: false
     fields:
       # ---- structural fields: kept out of the owner's way ----
       - { label: "Internal ID", name: "id", widget: "hidden", default: "new-property" }

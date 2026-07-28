@@ -18,8 +18,8 @@
 }
 
 .btn--primary {
-  color: var(--ink);
-  background: linear-gradient(120deg, var(--gold), var(--brass));
+  color: var(--btn-accent-text);
+  background: linear-gradient(120deg, var(--btn-accent), var(--btn-accent-deep));
   border: 1px solid transparent;
 }
 .btn--ghost {
@@ -42,7 +42,7 @@
 @media (hover: hover) {
   .btn--primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 34px rgba(224, 180, 88, 0.4);
+    box-shadow: 0 12px 34px rgba(31, 107, 82, 0.45);
   }
   .btn--ghost:hover {
     border-color: var(--gold);

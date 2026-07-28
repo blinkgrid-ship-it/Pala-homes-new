@@ -161,15 +161,15 @@
   font-family: var(--font-display);
   font-weight: 600;
   font-size: var(--step-1);
-  color: var(--ink);
-  background: linear-gradient(120deg, var(--gold), var(--brass));
+  color: var(--btn-accent-text);
+  background: linear-gradient(120deg, var(--btn-accent), var(--btn-accent-deep));
   padding: 15px 28px;
   border-radius: 44px;
   transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur), opacity var(--dur-fast);
 }
 .contact__submit:disabled { opacity: 0.7; cursor: progress; }
 @media (hover: hover) {
-  .contact__submit:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(224, 180, 88, 0.4); }
+  .contact__submit:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(31, 107, 82, 0.45); }
 }
 .contact__form-note {
   font-family: var(--font-mono);

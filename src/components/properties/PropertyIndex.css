@@ -35,9 +35,9 @@
   transition: all var(--dur-fast);
 }
 .pindex__filter.is-active {
-  color: var(--ink);
-  background: var(--gold);
-  border-color: var(--gold);
+  color: var(--btn-accent-text);
+  background: var(--btn-accent);
+  border-color: var(--btn-accent);
 }
 @media (hover: hover) {
   .pindex__filter:not(.is-active):hover { border-color: var(--gold); color: var(--gold); }
@@ -155,11 +155,11 @@
   transition: all var(--dur-fast);
 }
 .pindex__btn--primary {
-  color: var(--ink);
-  background: var(--gold);
-  border-color: var(--gold);
+  color: var(--btn-accent-text);
+  background: var(--btn-accent);
+  border-color: var(--btn-accent);
 }
 @media (hover: hover) {
   .pindex__btn:not(.pindex__btn--primary):hover { border-color: var(--gold); color: var(--gold); }
-  .pindex__btn--primary:hover { background: var(--brass); }
+  .pindex__btn--primary:hover { background: var(--btn-accent-deep); }
 }

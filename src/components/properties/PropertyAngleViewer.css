@@ -98,8 +98,8 @@
   font-size: 11px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--ink);
-  background: var(--gold);
+  color: var(--btn-accent-text);
+  background: var(--btn-accent);
   padding: 8px 14px;
   border-radius: 24px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
