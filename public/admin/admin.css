@@ -129,13 +129,43 @@ body, body * {
 [class*="ListControl"] {
   background: var(--ph-ink) !important;
 }
-/* Decap's media library / any modal it portals outside #nc-root */
-[class*="MediaLibraryModal"],
-[class*="ModalBody"],
-[class*="DialogContent"],
-[class*="Dialog-"] {
-  background: var(--ph-ink) !important;
+/* Decap's media library modal — confirmed live to use react-modal, whose
+   class names are fixed library constants, not hashed, so these are
+   reliable (unlike the [class*="Name"] guesses elsewhere in this file) */
+.ReactModal__Overlay {
+  background: rgba(4, 10, 11, 0.75) !important;
+}
+.ReactModal__Content {
+  background: var(--ph-ink-soft) !important;
+  border-color: var(--ph-hairline) !important;
   color: var(--ph-ivory) !important;
+}
+.ReactModal__Content h1,
+.ReactModal__Content h2,
+.ReactModal__Content h3 {
+  color: var(--ph-ivory) !important;
+}
+.ReactModal__Content button {
+  background: var(--ph-ink-raised);
+  color: var(--ph-ivory);
+  border: 1px solid var(--ph-hairline);
+}
+.ReactModal__Content input[type="search"],
+.ReactModal__Content input[type="text"] {
+  background: rgba(247, 242, 231, 0.06) !important;
+}
+
+/* field wrapper containers — confirmed live via devtools. The select
+   widget itself is a native <select>, but its wrapping container carries
+   its own opaque background, which is what was actually showing through
+   as "white" around/behind the dropdown */
+[class*="ControlContainer"],
+[class*="ControlTopbar"],
+[class*="ControlPaneContainer"],
+[class*="PreviewPaneContainer"],
+[class*="ViewControls"] {
+  background: var(--ph-ink) !important;
+  border-color: var(--ph-hairline) !important;
 }
 
 /* belt-and-braces: some surfaces are painted via inline style, which a
@@ -169,12 +199,23 @@ input[type="email"],
 input[type="password"],
 input[type="number"],
 input[type="search"],
-textarea,
-select {
+textarea {
   background: rgba(247, 242, 231, 0.06) !important;
   border: 1px solid var(--ph-hairline) !important;
   color: var(--ph-ivory) !important;
   border-radius: 8px !important;
+}
+select {
+  /* solid, not a faint tint — a <select>'s own background needs to read
+     correctly regardless of what its (also-overridden) wrapper looks like */
+  background: var(--ph-ink-soft) !important;
+  border: 1px solid var(--ph-hairline) !important;
+  color: var(--ph-ivory) !important;
+  border-radius: 8px !important;
+}
+select option {
+  background: var(--ph-ink-soft);
+  color: var(--ph-ivory);
 }
 input::placeholder, textarea::placeholder { color: rgba(247, 242, 231, 0.4) !important; }
 input:focus, textarea:focus, select:focus {
