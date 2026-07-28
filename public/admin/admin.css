@@ -1,0 +1,145 @@
+/* ============================================================
+   Pala Homes — Content Studio (Decap CMS) branding
+   Decap renders as plain DOM (not shadow DOM) into #nc-root using
+   emotion CSS-in-JS, whose class names keep a readable component-name
+   fragment (e.g. "css-<hash>-LoginButton-..."), so [class*="Name"]
+   substring selectors stay reasonably stable across version bumps.
+   Verified live against the rendered login screen; dashboard rules
+   below use Decap's documented component names as a best-effort layer,
+   backed by generic element rules that work regardless of naming.
+   ============================================================ */
+
+:root {
+  --ph-ink: #071112;
+  --ph-ink-soft: #0a2023;
+  --ph-ivory: #f7f2e7;
+  --ph-gold: #d9a441;
+  --ph-brass: #b8863e;
+  --ph-hairline: rgba(207, 226, 220, 0.16);
+}
+
+html, body {
+  background: radial-gradient(120% 100% at 15% 0%, #0d292c 0%, #071719 55%, #050f10 100%) !important;
+  min-height: 100%;
+}
+
+#nc-root, #nc-root * {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ---------- branded splash shown while decap-cms.js downloads ---------- */
+#ph-admin-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: radial-gradient(120% 100% at 15% 0%, #0d292c 0%, #071719 55%, #050f10 100%);
+  color: var(--ph-ivory);
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: opacity 0.4s ease;
+}
+#ph-admin-splash img { width: 56px; height: 56px; }
+#ph-admin-splash span {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: rgba(247, 242, 231, 0.75);
+}
+#ph-admin-splash.is-hidden { opacity: 0; pointer-events: none; }
+
+/* ---------- authentication / login screen ---------- */
+[class*="StyledAuthenticationPage"] {
+  background: transparent !important;
+  gap: 28px !important;
+}
+/* swap Decap's own wordmark for the Pala Homes mark */
+[class*="IconWrapper-DecapLogoIcon"] svg { display: none; }
+[class*="IconWrapper-DecapLogoIcon"] {
+  width: 64px;
+  height: 64px;
+  background-image: url('/favicon-256.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.45));
+}
+[class*="StyledAuthenticationPage"]::before {
+  content: 'Pala Homes — Content Studio';
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--ph-ivory);
+  letter-spacing: -0.01em;
+}
+[class*="LoginButton"] {
+  font-family: 'Fraunces', Georgia, serif !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  color: var(--ph-ink) !important;
+  background: linear-gradient(120deg, var(--ph-gold), var(--ph-brass)) !important;
+  border: none !important;
+  border-radius: 30px !important;
+  padding: 13px 30px !important;
+  box-shadow: 0 10px 26px rgba(217, 164, 65, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+[class*="LoginButton"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(217, 164, 65, 0.4);
+}
+
+/* ---------- dashboard chrome (best-effort: documented Decap component names) ---------- */
+[class*="AppHeader"],
+[class*="TopBarContainer"],
+[class*="Toolbar"] {
+  background: var(--ph-ink-soft) !important;
+  border-color: var(--ph-hairline) !important;
+}
+[class*="Sidebar"],
+[class*="CollectionTop"] {
+  background: var(--ph-ink) !important;
+  border-color: var(--ph-hairline) !important;
+}
+[class*="Card-"],
+[class*="EntryListing"] {
+  background: var(--ph-ink-soft) !important;
+  border-color: var(--ph-hairline) !important;
+  border-radius: 12px !important;
+}
+[class*="EditorControlPane"],
+[class*="ObjectControl"],
+[class*="ListControl"] {
+  background: var(--ph-ink-soft) !important;
+}
+
+/* ---------- generic fallback layer: always applies, name-agnostic ---------- */
+#nc-root h1, #nc-root h2, #nc-root h3 {
+  font-family: 'Fraunces', Georgia, serif !important;
+  color: var(--ph-ivory);
+}
+#nc-root a { color: var(--ph-gold); }
+#nc-root input[type="text"],
+#nc-root input[type="email"],
+#nc-root input[type="password"],
+#nc-root input[type="number"],
+#nc-root textarea,
+#nc-root select {
+  background: rgba(247, 242, 231, 0.05) !important;
+  border: 1px solid var(--ph-hairline) !important;
+  color: var(--ph-ivory) !important;
+  border-radius: 8px !important;
+}
+#nc-root input:focus,
+#nc-root textarea:focus,
+#nc-root select:focus {
+  border-color: var(--ph-gold) !important;
+  outline: none !important;
+}
+#nc-root button:not([class*="LoginButton"]) {
+  border-radius: 8px;
+}
+#nc-root ::selection { background: rgba(217, 164, 65, 0.35); }
