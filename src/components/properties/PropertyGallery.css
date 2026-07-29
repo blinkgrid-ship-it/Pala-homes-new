@@ -5,9 +5,14 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 10px 16px;
   padding: 18px 22px;
   border-bottom: 1px solid var(--hairline);
+}
+.gallery__titles {
+  min-width: 0;
+  flex: 1 1 200px;
 }
 .gallery__title {
   font-family: var(--font-display);
@@ -26,6 +31,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: none;
 }
 .gallery__close {
   width: 40px;

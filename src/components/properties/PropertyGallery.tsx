@@ -71,7 +71,7 @@ export function PropertyGallery({ property, open, onClose, startIndex = 0 }: Pro
           </p>
         </div>
         <div className="gallery__head-right">
-          <ConceptBadge status={property.status} />
+          <ConceptBadge status={property.status} compact />
           <button className="gallery__close" onClick={onClose} aria-label="Close gallery">
             ✕
           </button>
