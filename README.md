@@ -125,10 +125,12 @@ values and set `isPlaceholder: false`.
 
 ## Form integration
 
-The enquiry form in `components/sections/ContactSection.tsx` validates and shows
-loading / success / error states but **does not transmit** anything — there is a clearly
-marked `INTEGRATION POINT` in `onSubmit`. Wire it to a form provider (Formspree, Basin) or
-your own endpoint, and only then remove the "front-end demonstration" note.
+The enquiry form in `components/sections/ContactSection.tsx` submits via Netlify Forms:
+`onSubmit` POSTs the field data to `/` as `application/x-www-form-urlencoded`, and a hidden
+duplicate `<form data-netlify="true">` in `index.html` exists purely so Netlify's build-time
+bot registers the form and its fields (it never scans the real, client-rendered React form).
+Submissions land in the Netlify dashboard's **Forms** tab — set up **Form notifications**
+there to have them emailed to an inbox.
 
 ## Deployment
 

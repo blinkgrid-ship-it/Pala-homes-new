@@ -41,6 +41,27 @@
     <script type="module" src="/src/main.tsx"></script>
 
     <!--
+      Netlify Forms detection: Netlify's build-time bot only scans STATIC
+      HTML for <form data-netlify> — it never sees the real contact form,
+      since that's rendered client-side by React. This hidden duplicate
+      (never shown, never submitted) exists purely so Netlify registers the
+      "contact" form and its fields. The real submission happens via fetch()
+      in ContactSection.tsx, POSTing to "/" with a matching form-name.
+    -->
+    <form name="contact" data-netlify="true" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="area" />
+      <input type="text" name="type" />
+      <input type="text" name="use" />
+      <input type="text" name="budget" />
+      <textarea name="message"></textarea>
+      <input type="checkbox" name="whatsapp" />
+      <input type="checkbox" name="consent" />
+    </form>
+
+    <!--
       Netlify Identity: required so that the invite/reset-password links the
       owner receives by email (which land on this root page as
       `/#invite_token=...`) can open the login widget and then hand off to the

@@ -58,10 +58,16 @@ export function ContactSection({ prefill }: Props) {
       firstField?.focus();
       return;
     }
-    // INTEGRATION POINT: no backend is configured. Wire this to a form provider
-    // or API endpoint (see README "Form integration"). We do NOT claim delivery.
     setStatus('loading');
-    window.setTimeout(() => setStatus('success'), 900);
+    const params = new URLSearchParams();
+    data.forEach((value, key) => params.append(key, String(value)));
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString(),
+    })
+      .then(() => setStatus('success'))
+      .catch(() => setStatus('error'));
   };
 
   const closingHero = properties[1];
@@ -116,15 +122,22 @@ export function ContactSection({ prefill }: Props) {
               <div className="contact__success-mark" aria-hidden="true">✓</div>
               <h3>Thank you.</h3>
               <p>
-                Your enquiry is ready. As soon as a form backend is connected, messages will reach
-                the Pala Homes team directly. For now, please reach us on WhatsApp or email above.
+                Your enquiry has been sent. The Pala Homes team will be in touch shortly — you can
+                also reach us directly on WhatsApp or email above.
               </p>
               <button className="contact__reset" onClick={() => setStatus('idle')}>
                 Send another enquiry
               </button>
             </div>
           ) : (
-            <form className="contact__form" onSubmit={onSubmit} noValidate>
+            <form
+              className="contact__form"
+              name="contact"
+              data-netlify="true"
+              onSubmit={onSubmit}
+              noValidate
+            >
+              <input type="hidden" name="form-name" value="contact" />
               <div className="contact__row">
                 <Field label="Name" name="name" error={errors.name}>
                   <input ref={nameRef} id="name" name="name" type="text" autoComplete="name" aria-invalid={!!errors.name} required />
@@ -190,9 +203,15 @@ export function ContactSection({ prefill }: Props) {
                 {status === 'loading' ? 'Sending…' : 'Book a consultation →'}
               </button>
 
+              {status === 'error' && (
+                <p className="contact__err" role="alert">
+                  Something went wrong sending your enquiry — please try again, or reach us directly
+                  on WhatsApp or email above.
+                </p>
+              )}
+
               <p className="contact__form-note">
-                This form is a front-end demonstration. No message is transmitted until a backend is
-                configured.
+                Enquiries submitted here go directly to the Pala Homes team.
               </p>
             </form>
           )}

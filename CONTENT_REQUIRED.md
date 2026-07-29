@@ -38,9 +38,10 @@ it can be presented as a real, active Pala Homes property site. Until then, keep
       service claims are backed by the relevant licences (`src/data/services.ts`).
 
 ## Integrations
-- [ ] Form backend for the enquiry form — wire the `INTEGRATION POINT` in
-      `components/sections/ContactSection.tsx` (Formspree / Basin / custom API) and remove
-      the "front-end demonstration" note once messages actually send.
+- [x] Form backend for the enquiry form — wired to Netlify Forms (see
+      `components/sections/ContactSection.tsx` and the hidden duplicate form in `index.html`).
+      Submissions appear under the Netlify dashboard's Forms tab; set up email notifications
+      there (Site configuration → Forms → Form notifications) so enquiries reach an inbox.
 - [ ] Analytics (if desired).
 
 ## SEO / metadata
