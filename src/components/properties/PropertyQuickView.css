@@ -20,16 +20,20 @@
 }
 .quickview__grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0;
   overflow-y: auto;
+  overflow-x: hidden;
+  min-width: 0;
 }
 .quickview__media {
   padding: 20px;
   background: #061414;
+  min-width: 0;
 }
 .quickview__info {
   padding: 24px clamp(20px, 3vw, 40px) calc(32px + env(safe-area-inset-bottom));
+  min-width: 0;
 }
 .quickview__name {
   font-family: var(--font-display);
@@ -156,7 +160,7 @@
 
 @media (min-width: 900px) {
   .quickview__grid {
-    grid-template-columns: 1.15fr 1fr;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   }
   .quickview__media {
     padding: 24px;
