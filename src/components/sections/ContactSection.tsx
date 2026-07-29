@@ -59,14 +59,16 @@ export function ContactSection({ prefill }: Props) {
       return;
     }
     setStatus('loading');
-    const params = new URLSearchParams();
-    data.forEach((value, key) => params.append(key, String(value)));
-    fetch('/', {
+    const payload = Object.fromEntries(data.entries());
+    fetch('/api/contact', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: params.toString(),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
     })
-      .then(() => setStatus('success'))
+      .then((res) => {
+        if (!res.ok) throw new Error('Request failed');
+        setStatus('success');
+      })
       .catch(() => setStatus('error'));
   };
 
@@ -130,14 +132,7 @@ export function ContactSection({ prefill }: Props) {
               </button>
             </div>
           ) : (
-            <form
-              className="contact__form"
-              name="contact"
-              data-netlify="true"
-              onSubmit={onSubmit}
-              noValidate
-            >
-              <input type="hidden" name="form-name" value="contact" />
+            <form className="contact__form" onSubmit={onSubmit} noValidate>
               <div className="contact__row">
                 <Field label="Name" name="name" error={errors.name}>
                   <input ref={nameRef} id="name" name="name" type="text" autoComplete="name" aria-invalid={!!errors.name} required />

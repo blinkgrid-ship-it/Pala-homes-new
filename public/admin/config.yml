@@ -1,10 +1,16 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: blinkgrid-ship-it/Pala-homes-new
   branch: main
+  base_url: https://pala-homes-new.blinkgrid.workers.dev
+  auth_endpoint: auth
 
-# Netlify Identity + Git Gateway (enabled in the Netlify dashboard, not here)
-# handles who can log in and commits their edits back to this repo on `main`,
-# which triggers a normal rebuild. No separate server or database involved.
+# GitHub OAuth login, proxied through the small Cloudflare Worker at
+# worker/index.js (routes: /auth, /callback). Owner logs in with a GitHub
+# account that has push access to this repo; edits commit directly to
+# `main`, which triggers a normal Cloudflare Pages rebuild. Replaces the
+# earlier Netlify Identity + Git Gateway setup (Netlify-only, and a
+# product Netlify has stopped actively developing).
 
 media_folder: "public/uploads"
 public_folder: "/uploads"

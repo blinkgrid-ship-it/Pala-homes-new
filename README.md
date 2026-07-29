@@ -125,22 +125,30 @@ values and set `isPlaceholder: false`.
 
 ## Form integration
 
-The enquiry form in `components/sections/ContactSection.tsx` submits via Netlify Forms:
-`onSubmit` POSTs the field data to `/` as `application/x-www-form-urlencoded`, and a hidden
-duplicate `<form data-netlify="true">` in `index.html` exists purely so Netlify's build-time
-bot registers the form and its fields (it never scans the real, client-rendered React form).
-Submissions land in the Netlify dashboard's **Forms** tab — set up **Form notifications**
-there to have them emailed to an inbox.
+The enquiry form in `components/sections/ContactSection.tsx` POSTs its field data as JSON to
+`/api/contact`, a small Cloudflare Worker route (`worker/index.js`) that forwards it on via
+Brevo's transactional email API. No form-provider dashboard involved — the worker is the whole
+backend for this. See `worker/index.js` for the required environment secrets
+(`BREVO_API_KEY`, `BREVO_SENDER_EMAIL`, `CONTACT_TO_EMAIL`).
+
+## CMS admin login
+
+`/admin` uses Sveltia CMS with a GitHub OAuth backend (see `public/admin/config.yml`), proxied
+through the same worker's `/auth` and `/callback` routes (`GITHUB_CLIENT_ID` /
+`GITHUB_CLIENT_SECRET` secrets required). The owner logs in with a GitHub account that has push
+access to this repo — no separate Identity/invite system involved.
 
 ## Deployment
 
-Any static host (Netlify, Vercel, Cloudflare Pages, GitHub Pages):
+Hosted on **Cloudflare Workers** (static assets + the two API routes above, see
+`wrangler.jsonc`):
 
 ```bash
-npm run build   # outputs to dist/
+npm run build       # outputs to dist/
+npx wrangler deploy # or let Cloudflare's Git integration build+deploy on push
 ```
 
-Serve `dist/`. Update the canonical URL, `robots.txt` sitemap URL, and `og:image` for the
+Update the canonical URL, `robots.txt` sitemap URL, and `og:image` for the
 real domain.
 
 ## Git workflow

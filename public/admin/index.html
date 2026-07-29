@@ -16,26 +16,22 @@
     <link rel="stylesheet" href="/admin/admin.css" />
   </head>
   <body>
-    <!-- shown until decap-cms.js mounts into #nc-root, so the admin never
+    <!-- shown until sveltia-cms.js mounts into #nc-root, so the admin never
          flashes an unbranded blank/white page while it loads -->
     <div id="ph-admin-splash">
       <img src="/favicon-256.png" alt="" />
       <span>Loading Pala Homes Content Studio…</span>
     </div>
 
-    <!-- Netlify Identity gate: only signed-in, invited users reach the CMS. -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', (user) => {
-          if (!user) {
-            window.netlifyIdentity.open();
-          }
-        });
-      }
-    </script>
+    <!--
+      Login is now GitHub OAuth, proxied through the /auth + /callback
+      routes in worker/index.js — no Netlify Identity involved. Sveltia CMS
+      reads the same config.yml as before (github backend) and opens a
+      popup to /auth when the owner clicks "Log in with GitHub".
+    -->
     <script
-      src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"
+      src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"
+      type="module"
       onload="setTimeout(() => document.getElementById('ph-admin-splash').classList.add('is-hidden'), 300)"
     ></script>
   </body>

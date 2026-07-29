@@ -38,10 +38,11 @@ it can be presented as a real, active Pala Homes property site. Until then, keep
       service claims are backed by the relevant licences (`src/data/services.ts`).
 
 ## Integrations
-- [x] Form backend for the enquiry form — wired to Netlify Forms (see
-      `components/sections/ContactSection.tsx` and the hidden duplicate form in `index.html`).
-      Submissions appear under the Netlify dashboard's Forms tab; set up email notifications
-      there (Site configuration → Forms → Form notifications) so enquiries reach an inbox.
+- [x] Form backend for the enquiry form — POSTs to `/api/contact` (a Cloudflare Worker route,
+      `worker/index.js`), which sends the enquiry on via Brevo. Requires `BREVO_API_KEY`,
+      `BREVO_SENDER_EMAIL`, and `CONTACT_TO_EMAIL` set as Cloudflare Worker secrets.
+- [x] CMS login — Sveltia CMS with a GitHub OAuth backend, proxied through the same worker's
+      `/auth` + `/callback` routes. Requires `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` secrets.
 - [ ] Analytics (if desired).
 
 ## SEO / metadata
